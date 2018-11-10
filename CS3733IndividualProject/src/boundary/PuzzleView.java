@@ -27,15 +27,39 @@ public class PuzzleView extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		for(Piece piece: pieces) { 
-			if (piece.isKeyPiece()) {
+		for(Piece p: pieces) { 
+			if (p.isSelected()) {
+				g.setColor(Color.yellow);
+			}
+			else if (p.isKeyPiece()) {
 				g.setColor(Color.red);
 			}
 			else 
 				g.setColor(Color.green);
-			g.fillRect(offset+piece.getColumn()*100, offset+piece.getRow()*100, piece.getWidth()*100-2*offset, piece.getHeight()*100-2*offset);
+			g.fillRect(offset+p.getColumn()*100, offset+p.getRow()*100, p.getWidth()*100-2*offset, p.getHeight()*100-2*offset);
 
 		}
+		g.setColor(Color.white);
+		g.fillRect(105, 497, 190, 3);
+	}
+	
+	public int getRow(int y) {
+		int boxHeight = 500/5;
+		if (y >= offset && y <= boxHeight - offset) { return 0; }
+		if (y >= boxHeight + offset && y <= 2*boxHeight - offset) { return 1; }
+		if (y >= 2*boxHeight + offset && y <= 3*boxHeight - offset) { return 2; }
+		if (y >= 3*boxHeight + offset && y <= 4*boxHeight - offset) { return 3; }
+		if (y >= 4*boxHeight + offset && y <= 5*boxHeight - offset) { return 4; }
+		return -1;
+	}
+
+	public int getColumn(int x) {
+		int boxWidth = 400/4;
+		if (x >= offset && x <= boxWidth - offset) { return 0; }
+		if (x >= boxWidth + offset && x <= 2*boxWidth - offset) { return 1; }
+		if (x >= 2*boxWidth + offset && x <= 3*boxWidth - offset) { return 2; }
+		if (x >= 3*boxWidth + offset && x <= 4*boxWidth - offset) { return 3; }
+		return -1;
 	}
 	
 }

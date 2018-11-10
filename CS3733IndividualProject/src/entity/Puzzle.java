@@ -20,12 +20,31 @@ public class Puzzle {
 		pieces.add(new Piece(2,1,2,4));
 	}
 	
-	boolean hasSelected() {
-		return true;
+	public void selectPiece(int row, int col) {
+		for (Piece p: pieces) {
+			if (p.getRow()==row && p.getColumn()==col) {
+				p.selected = true;
+				break;
+			}
+			else if(p.getRow()==row-1 && p.getColumn()==col && p.getHeight()==2) {
+				p.selected = true;
+				break;
+			}
+			else if(p.getRow()==row && p.getColumn()==col-1 && p.getWidth()==2) {
+				p.selected = true;
+				break;
+			}
+			else if(p.getRow()==row-1 && p.getColumn()==col-1 && p.isKeyPiece()) {
+				p.selected = true;
+				break;
+			}
+		}
 	}
 	
-	void selectPiece(int row, int col) {
-		
+	public void unselectAll() {
+		for (Piece p: pieces) {
+			p.selected = false;
+		}
 	}
 	
 	public ArrayList<Piece> getPieces() {

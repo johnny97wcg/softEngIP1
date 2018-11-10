@@ -15,6 +15,7 @@ public class Piece {
 		this.height = height;
 		this.row = row;
 		this.column = column;
+		this.selected = false;
 	}
 	
 	public boolean isKeyPiece() {
@@ -32,6 +33,10 @@ public class Piece {
 	}
 	public int getColumn() {
 		return this.column;
+	}
+	
+	public boolean isSelected() {
+		return this.selected;
 	}
 
 }
