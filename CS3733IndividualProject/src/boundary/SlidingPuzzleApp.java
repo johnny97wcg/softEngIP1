@@ -19,9 +19,12 @@ import javax.swing.JLabel;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
+import controller.ExitController;
 import controller.MoveController;
 import controller.ResetController;
 import controller.SelectController;
@@ -35,6 +38,9 @@ public class SlidingPuzzleApp extends JFrame {
 	 * Launch the application.
 	 */
 	PuzzleView puzzleView;
+
+	protected int move = 0;
+	JLabel label = new JLabel("0");
 	
 	public PuzzleView getPuzzleView() { return puzzleView; }
 	
@@ -56,12 +62,12 @@ public class SlidingPuzzleApp extends JFrame {
 	 */
 	public SlidingPuzzleApp(Puzzle puzzle) {
 		setTitle("SlidingPuzzleApp");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setVisible(true);
 		setBounds(100, 100, 700, 600);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
 	
 		puzzleView = new PuzzleView(puzzle);
 		puzzleView.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -72,6 +78,12 @@ public class SlidingPuzzleApp extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				//System.out.println(String.valueOf(e.getPoint()));
 				new SelectController(SlidingPuzzleApp.this, puzzle).select(e.getX(), e.getY());
+			}
+		});
+		
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				new ExitController(SlidingPuzzleApp.this).process();
 			}
 		});
 		
@@ -111,8 +123,8 @@ public class SlidingPuzzleApp extends JFrame {
 		});
 		
 		JLabel lblMoves = new JLabel("Moves:");
-		int move = 0;
-		JLabel label = new JLabel(String.valueOf(move));
+//		label = new JLabel(String.valueOf(move));
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -168,5 +180,18 @@ public class SlidingPuzzleApp extends JFrame {
 	
 	public SlidingPuzzleApp() {
 		this(new Puzzle());
+	}
+	
+	
+	public int getMove() {
+		return move;
+	}
+	
+	public void setMove(int m) {
+		move = m;
+	}
+	
+	public void setLabel(JLabel l) {
+		label = l;
 	}
 }

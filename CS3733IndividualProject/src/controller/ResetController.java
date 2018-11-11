@@ -1,5 +1,6 @@
 package controller;
 
+import boundary.PuzzleView;
 import boundary.SlidingPuzzleApp;
 import entity.Puzzle;
 
@@ -13,8 +14,9 @@ public class ResetController {
 	}
 	
 	public void reset() {
-		this.puzzle = new Puzzle();
-		this.app = new SlidingPuzzleApp();
-		
+		puzzle = new Puzzle();
+		app = new SlidingPuzzleApp(puzzle);
+		PuzzleView view = app.getPuzzleView();
+		view.repaint();
 	}
 }

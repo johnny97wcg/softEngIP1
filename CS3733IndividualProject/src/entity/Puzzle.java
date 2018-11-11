@@ -72,7 +72,7 @@ public class Puzzle {
 		int c = p.getColumn();
 		int w = p.getWidth();
 		int h = p.getHeight();
-		System.out.println("r:"+r+" c:"+c+" w:"+w+" h:"+h);
+//		System.out.println("r:"+r+" c:"+c+" w:"+w+" h:"+h);
 		if (r+dy < 0 || c+dx < 0 || r+dy+h-1>4 || c+dx+w-1>3) {
 			System.out.println("off the board");
 			return false;

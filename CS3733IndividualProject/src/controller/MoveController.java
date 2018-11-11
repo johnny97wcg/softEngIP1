@@ -1,5 +1,7 @@
 package controller;
 
+import javax.swing.JLabel;
+
 import boundary.PuzzleView;
 import boundary.SlidingPuzzleApp;
 import entity.Puzzle;
@@ -20,21 +22,26 @@ public class MoveController {
 			switch (dir) {
 			case 'u': 
 				if(puzzle.tryMove(0,-1)) {
+					app.setMove(app.getMove()+1);
+					app.setLabel(new JLabel(String.valueOf(app.getMove())));
 					view.repaint();
 				}
 				break;
 			case 'd':
 				if(puzzle.tryMove(0,1)) {
+					app.setMove(app.getMove()+1);
 					view.repaint();
 				}
 				break;
 			case 'l':
 				if(puzzle.tryMove(-1,0)) {
+					app.setMove(app.getMove()+1);
 					view.repaint();
 				}
 				break;
 			case 'r':
 				if(puzzle.tryMove(1,0)) {
+					app.setMove(app.getMove()+1);
 					view.repaint();
 				}
 				break;
