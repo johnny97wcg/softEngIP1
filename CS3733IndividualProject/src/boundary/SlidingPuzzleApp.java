@@ -40,7 +40,7 @@ public class SlidingPuzzleApp extends JFrame {
 	PuzzleView puzzleView;
 
 	protected int move = 0;
-	JLabel label = new JLabel("0");
+	public JLabel label = new JLabel("0");
 	
 	public PuzzleView getPuzzleView() { return puzzleView; }
 	
@@ -123,7 +123,7 @@ public class SlidingPuzzleApp extends JFrame {
 		});
 		
 		JLabel lblMoves = new JLabel("Moves:");
-//		label = new JLabel(String.valueOf(move));
+		label = new JLabel(String.valueOf(move));
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

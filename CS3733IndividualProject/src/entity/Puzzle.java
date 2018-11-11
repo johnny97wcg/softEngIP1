@@ -130,5 +130,26 @@ public class Puzzle {
 		return true;
 	}
 	
+	public void resetPieces() {
+		pieces.clear();
+		pieces.add(new Piece(1,2,0,0));
+		pieces.add(new Piece(1,1,1,0));
+		pieces.add(new Piece(1,1,2,0));
+		pieces.add(new Piece(1,1,3,0));
+		pieces.add(new Piece(1,2,1,1));
+		pieces.add(new Piece(2,2,2,1));
+		pieces.add(new Piece(1,2,0,2));
+		pieces.add(new Piece(2,1,1,3));
+		pieces.add(new Piece(1,1,3,3));
+		pieces.add(new Piece(2,1,2,4));
+		selectedPiece = -1;
+	}
+	
+	public boolean win() {
+		Piece p = pieces.get(selectedPiece);
+		int r = p.getRow();
+		int c = p.getColumn();
+		return (r==3 && c==1 && p.isKeyPiece());
+	}
 
 }

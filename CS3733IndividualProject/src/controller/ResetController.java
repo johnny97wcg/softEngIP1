@@ -14,8 +14,9 @@ public class ResetController {
 	}
 	
 	public void reset() {
-		puzzle = new Puzzle();
-		app = new SlidingPuzzleApp(puzzle);
+		puzzle.resetPieces();
+		app.setMove(0);
+		app.label.setText(String.valueOf(app.getMove()));
 		PuzzleView view = app.getPuzzleView();
 		view.repaint();
 	}
