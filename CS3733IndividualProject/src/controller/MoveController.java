@@ -1,6 +1,5 @@
 package controller;
 
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import boundary.PuzzleView;
