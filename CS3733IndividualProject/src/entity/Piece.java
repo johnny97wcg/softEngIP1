@@ -34,6 +34,13 @@ public class Piece {
 	public int getColumn() {
 		return this.column;
 	}
+	public void setRow(int r) {
+		this.row = r;
+	}
+	public void setColumn(int c) {
+		this.column = c;
+	}
+	
 	
 	public boolean isSelected() {
 		return this.selected;

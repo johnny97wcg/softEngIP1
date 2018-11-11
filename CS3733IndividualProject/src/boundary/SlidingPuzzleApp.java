@@ -22,6 +22,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.border.LineBorder;
 
+import controller.MoveController;
 import controller.ResetController;
 import controller.SelectController;
 
@@ -84,24 +85,28 @@ public class SlidingPuzzleApp extends JFrame {
 		JButton btnUp = new JButton("^");
 		btnUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new MoveController(SlidingPuzzleApp.this,puzzle).move('u');
 			}
 		});
 		
 		JButton btnLeft = new JButton("<");
 		btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new MoveController(SlidingPuzzleApp.this,puzzle).move('l');
 			}
 		});
 		
 		JButton btnRight = new JButton(">");
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new MoveController(SlidingPuzzleApp.this,puzzle).move('r');
 			}
 		});
 		
 		JButton btnDown = new JButton("V");
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				new MoveController(SlidingPuzzleApp.this,puzzle).move('d');
 			}
 		});
 		
