@@ -112,7 +112,7 @@ public class Puzzle {
 		
 	}
 	
-	boolean isEmpty(int row, int col) {
+	public boolean isEmpty(int row, int col) {
 		for (Piece p: pieces) {
 			if (p.getRow()==row && p.getColumn()==col) {
 				return false;
